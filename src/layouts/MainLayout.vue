@@ -1,8 +1,14 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-nav>
-      
-    </q-nav>
+  <q-layout view="hHh Lpr lFf">
+    <q-header class="bg-white header">
+      <nav class="justify-end flex items-center">
+        <q-btn @click="toggleTrans('/')" flat text-color="orange">Home</q-btn>
+        <q-btn @click="toggleTrans('/about')" flat text-color="orange">About</q-btn>
+        <q-btn @click="toggleTrans('/blog')" flat text-color="orange">Blog</q-btn>
+        <q-btn @click="toggleTrans('/projects')" flat text-color="orange">Projects</q-btn>
+      </nav>
+
+    </q-header>
     <div id="BeachSceneWrapper">
       <div id="BeachSceneRelative">
         <div id="DarkBlueWave" :style="`background-image: url('${ require('assets/DarkBlueWave.png') }');`">
@@ -20,8 +26,9 @@
     <q-footer style="background-color: transparent; text-align: center;">
       Designed and created by: Gilbert Rogers © 2021
     </q-footer>
-    <q-page-container>
-      <router-view />
+    <q-page-container class="PageContainer" :class="this.transition? 'PageContainerTrans':''">
+        <router-view>
+        </router-view>
     </q-page-container>
   </q-layout>
 </template>
@@ -32,17 +39,14 @@ import '../css/layouts/MainLayout.scss';
 export default {
   name: 'MainLayout',
   components: {},
-  data () {
-    return {
-      transition: false,
+  computed: {
+    transition: function() {
+      return this.$store.state.transition.transition
     }
   },
   methods: {
-    toggleTrans: function () {
-      this.transition = true;
-      setTimeout(() => {
-          this.transition = false;
-       }, 2000);
+    toggleTrans: function (path) {
+      this.$store.dispatch('transition/CHANGE_PAGE', { path: path })
     }
   }
 }

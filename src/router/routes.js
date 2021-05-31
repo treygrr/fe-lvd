@@ -5,9 +5,15 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Index.vue') },
       { path: '/about', component: () => import ('pages/About.vue') },
-      { path: '/blog', component: () => import ('pages/blog.vue') },
-      { path: '/projects', component: () => import ('pages/projects.vue') },
-
+      { path: '/projects', component: () => import ('pages/Projects.vue') },
+    ]
+  },
+  {
+    path: '/blog',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import ('pages/Blog.vue') },
+      { path: '/blog/read', component: () => import ('pages/BlogEntry.vue') }
     ]
   },
 
