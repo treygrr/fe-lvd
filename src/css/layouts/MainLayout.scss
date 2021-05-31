@@ -1,0 +1,150 @@
+html, body {
+	position: absolute;
+	overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+}
+
+#BeachSceneWrapper {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    z-index: 100;
+}
+
+#BeachSceneRelative {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+#WaveTrans {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    background-color: #0CB2CB;
+    height: 0;
+    transition: height 1s ease-in-out;
+}
+
+#WaveTrans.WaveTransStretch {
+    height: calc(100vh + 10vh);
+}
+
+#LightBlueWave {
+    position: absolute;
+    background-repeat: repeat-x;
+    bottom: 0;
+    left: 0;
+    width: 8000px;
+    height: 5vh;
+    opacity: .7;
+    background-position: top left;
+    background-size: 4000px 5vh;
+    animation: Waves 25s linear reverse infinite;
+}
+
+#DarkBlueWave {
+    position: absolute;
+    background-repeat: repeat-x;
+    bottom: 0;
+    left: 0;
+    width: 8000px;
+    height: 5vh;
+    opacity: .7;
+    background-position: top left;
+    background-size: 4000px 5vh;
+    animation: Waves 20s linear infinite;
+}
+
+#Island {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    height: 10vh;
+}
+
+#Umbrella {
+    position: absolute;
+    height: 5vh;
+    right: 15vh;
+    bottom: 5vh;
+}
+
+#Umbrella > img {
+    position: absolute;
+    bottom: 0;
+    width: auto;
+    height: 10vh;
+}
+
+@keyframes Waves {
+    0% { 
+        transform: translate3d(0, 0, 0);
+    }
+    100% { transform: translate3d(-4000px, 0, 0); }
+}
+
+@media only screen and (max-width: 600px) {
+    #BeachSceneWrapper {
+        position: absolute;
+        bottom: 0;
+        width: 100vw;
+        z-index: 100;
+    }
+    
+    #BeachSceneRelative {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        bottom: 0;
+        left: 0;
+    }
+
+    #LightBlueWave {
+        position: absolute;
+        background-repeat: repeat-x;
+        top: -50px;
+        left: 0;
+        width: 8000px;
+        height: 50px;
+        animation: Waves 25s linear reverse infinite;
+    }
+    
+    #DarkBlueWave {
+        background-repeat: repeat-x;
+        width: 40000px;
+        height: 50px;
+        animation: Waves 20s linear infinite;
+    }
+    #Island {
+        position: absolute;
+        height: 10vh;
+        right: 0;
+        bottom: 0;
+    }
+    
+    #Island > img {
+        width: auto;
+        height: 10vh;
+    }
+    
+    #Umbrella {
+        height: 5vh;
+        bottom: 8vh;
+
+    }
+
+    #Umbrella > img {
+        width: auto;
+        height: 5vh;
+    }
+
+  }
