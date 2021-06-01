@@ -1,1 +1,31 @@
 // app global css in SCSS form
+@font-face {
+    font-family: fancy;
+    src: url('./fonts/Fancy Darling.otf');
+}
+
+// app global css in SCSS form
+@font-face {
+    font-family: human;
+    src: url('./fonts/Human Regular.otf');
+}
+
+// app global css in SCSS form
+@font-face {
+    font-family: design;
+    src: url('./fonts/DESIGNER.ttf');
+}
+
+@font-face {
+    font-family: tinker;
+    src: url('./fonts/tinker.otf');
+}
+
+@font-face {
+    font-family: gamer;
+    src: url('./fonts/gamer.otf');
+}
+@font-face {
+    font-family: nerd;
+    src: url('./fonts/nerd.ttf');
+}

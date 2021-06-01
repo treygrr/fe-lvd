@@ -15,7 +15,13 @@ nav {
     height: 100%;
 }
 
+.navLink {
+    box-sizing: border-box;
+    padding: 10px;
+}
+
 #BeachSceneWrapper {
+    user-select: none;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -41,6 +47,14 @@ nav {
 
 #WaveTrans.WaveTransStretch {
     height: calc(100vh + 10vh);
+}
+
+.surfboard {
+    background-image: url('../../assets/Surfboard.png');
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-origin: content-box;
 }
 
 .PageContainer {
@@ -72,7 +86,7 @@ nav {
     left: 0;
     width: 8000px;
     height: 5vh;
-    opacity: .7;
+    opacity: 1;
     background-position: top left;
     background-size: 4000px 5vh;
     animation: Waves 20s linear infinite;

@@ -20,7 +20,7 @@ module.exports = function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://v1.quasar.dev/quasar-cli/boot-files
     boot: [
-      
+      'api',
       'axios',
     ],
 
@@ -46,7 +46,7 @@ module.exports = function (/* ctx */) {
     // Full list of options: https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
-
+      env: require('dotenv').config().parsed,
       // transpile: false,
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
@@ -95,7 +95,7 @@ module.exports = function (/* ctx */) {
       //
       // components: [],
       // directives: [],
-
+      cssAddon: true,
       // Quasar plugins
       plugins: []
     },
