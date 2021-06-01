@@ -36,6 +36,13 @@
           I'm task oriented, and when I am on a task I don't like being distracted. Thanks ADD. 😅 I can hyper focus on some random stupid interest,
           and suddenly 6 hours are gone. I didn't think many people would make it this far in my bio so cudos! 👏
         </p>
+        <h4>Technologies</h4>
+        <p>
+          So here are some technologies that I am familiar with but not limited to (always something to learn): Unix, Linux, Windows, MacOS, Photoshop, Illustrator, Figma, inDesign, Adobe XD, Microsoft Office,
+          Slack, Discord, Nginx, Laravel, Docker, Dbeaver, Php, Postgres, MySQL, Nodejs, Deno, Github, VSCode, PhpStorm, Sublime Merge, Github CLI, HTML, CSS, Javascript, Vue, React, Quasar, Electron, Java, Kotlin, Android Studio, C++, xcode, swift, AWS, EC2, Code Deploy,
+          Digital Ocean, Droplets, General networking, and general computer hardware(building custom pcs).
+           I'm sure there is much more. 🥴
+        </p>
 
       </div>
     </section>
@@ -62,14 +69,12 @@ h4 {
 .Content {
   width: 70vw;
   box-sizing: border-box;
-  background-color: rgb(255, 246, 193);
-  border-radius: 10px;
 }
 .CardOuter {
   width: 100%;
   color: rgba(0, 0, 0, .7);
 
-  background-color: white;
+  background-color: rgb(255, 246, 193);
   box-sizing: border-box;
   border-radius: 10px;
     & > .AvatarFrame {
