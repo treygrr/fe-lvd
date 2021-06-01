@@ -1,86 +1,56 @@
 <template>
-  <q-page style="background-color: rgba(255,255,255, .4); box-sizing: border-box;" class="Page column items-sm-center q-pa-sm">
-    <section class="Content q-pa-sm">
-      <div class="CardOuter q-pa-lg flex row items-center">
-        <div class="AvatarFrame">
-          <img src="https://i.picsum.photos/id/250/200/200.jpg?hmac=23TaEG1txY5qYZ70amm2sUf0GYKo4v7yIbN9ooyqWzs" alt="User Avatar Photo">
-        </div>
-        <div class="CardInfo q-pl-lg">
-          <h2>Title Blog Post</h2>
-          <p><b>Author:</b> Gilbert Rogers</p>
-          <p><b>Date:</b> Gilbert Rogers</p>
-          <span class="TagCard">SomeTag</span>          
-          <span class="TagCard">SomeTag</span>
-          <span class="TagCard">SomeTag</span>
-          <span class="TagCard">SomeTag</span>
-          <span class="TagCard">SomeTag</span>
-          <span class="TagCard">SomeTag</span>
-
-        </div>
-        <p style="width: 100%;" class="q-mt-lg">
-          I'm a gamer, although my gaming time has drastically reduced in the past 10 years. 
-          I enjoy WoW when the expansion isn't garbage. 
-          League of Legends, Bioshock Series, Neopets (yes neopets), Digmon World, Toontown, Pokemon (though the mainline series is recycled as much as the next game), 
-          and Call of Duty.
-
-          I like just about all music. 🎶
-
-          My heavy rotation at the moment is Glass Animals, Nicki Minaj, Cardi B, Kid Cudi, NF, J. Cole, Frank Ocean, and Panic! at the disco!.
-          I'm a gamer, although my gaming time has drastically reduced in the past 10 years. 
-          I enjoy WoW when the expansion isn't garbage. 
-          League of Legends, Bioshock Series, Neopets (yes neopets), Digmon World, Toontown, Pokemon (though the mainline series is recycled as much as the next game), 
-          and Call of Duty.
-
-          I like just about all music. 🎶
-
-          My heavy rotation at the moment is Glass Animals, Nicki Minaj, Cardi B, Kid Cudi, NF, J. Cole, Frank Ocean, and Panic! at the disco!.
-
-          I'm a gamer, although my gaming time has drastically reduced in the past 10 years. 
-          I enjoy WoW when the expansion isn't garbage. 
-          League of Legends, Bioshock Series, Neopets (yes neopets), Digmon World, Toontown, Pokemon (though the mainline series is recycled as much as the next game), 
-          and Call of Duty.
-
-          I like just about all music. 🎶
-
-          My heavy rotation at the moment is Glass Animals, Nicki Minaj, Cardi B, Kid Cudi, NF, J. Cole, Frank Ocean, and Panic! at the disco!.
-          I'm a gamer, although my gaming time has drastically reduced in the past 10 years. 
-          I enjoy WoW when the expansion isn't garbage. 
-          League of Legends, Bioshock Series, Neopets (yes neopets), Digmon World, Toontown, Pokemon (though the mainline series is recycled as much as the next game), 
-          and Call of Duty.
-
-          I like just about all music. 🎶
-
-          My heavy rotation at the moment is Glass Animals, Nicki Minaj, Cardi B, Kid Cudi, NF, J. Cole, Frank Ocean, and Panic! at the disco!.
-          I'm a gamer, although my gaming time has drastically reduced in the past 10 years. 
-          I enjoy WoW when the expansion isn't garbage. 
-          League of Legends, Bioshock Series, Neopets (yes neopets), Digmon World, Toontown, Pokemon (though the mainline series is recycled as much as the next game), 
-          and Call of Duty.
-
-          I like just about all music. 🎶
-
-          My heavy rotation at the moment is Glass Animals, Nicki Minaj, Cardi B, Kid Cudi, NF, J. Cole, Frank Ocean, and Panic! at the disco!.
-        </p>
+  <q-page v-if="blog" style="background-color: rgba(255,255,255, .4); box-sizing: border-box;" class="Page column items-sm-center q-pa-sm">
+    <section class="Controls flex justify-between items-center q-mb-sm">
+      <div class="ForwardBack flex justify-around items-center">
+        <q-btn @click="goback()" flat color="orange" icon="chevron_left" label="Go Back"></q-btn>
       </div>
     </section>
+    <section class="Content">
+      <div class="CardOuter q-pa-lg q-mb-smn">
+        <div class="flex row no-wrap">
+          <div class="AvatarFrame">
+            <img src="https://i.picsum.photos/id/250/200/200.jpg?hmac=23TaEG1txY5qYZ70amm2sUf0GYKo4v7yIbN9ooyqWzs" alt="User Avatar Photo">
+            <p class="q-mb-none">Gilbert Rogers</p>
+            <p class="q-mb-none">04/25/2022</p>
+          </div>
+          <div class="CardInfo q-pl-lg">
+            <h2>{{ blog.title }}</h2>
+            <div>
+              {{ blog.content }}
+            </div>
+            <div class="flex row">
+              <span v-for="tag in blog.tags" :key="tag.id" class="TagCard">{{ tag.tag }}</span>          
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div style="height: 100px;" />
   </q-page>
 </template>
 <style lang="scss" scoped>
 .Page {
   width: 100vw;
   box-sizing: border-box;
+  position: relative;
 }
 .TagCard {
   background-color: lightblue;
   padding: 5px;
   border-radius: 10px;
-  margin-right: 10px;
+  margin: 5px;
+  margin-right: 5px;
   &.TagCard:last-child {
     margin-right: 0;
+  }
+  &.TagCard:first-child {
+    margin-left: 0;
   }
 }
 
 h2 {
   font-size: 24px;
+  font-weight: 700;
   line-height: 34px;
   color: rgba(0, 0, 0, .7);
   margin: 0;
@@ -92,24 +62,35 @@ h4 {
   margin: 0;
   margin-bottom: 1vh;
 }
+
 .Content {
   width: 70vw;
   box-sizing: border-box;
-  background-color: rgb(255, 246, 193);
   border-radius: 10px;
 }
+
+.Controls {
+  width: 70vw;
+  border-radius: 10px;
+}
+
 .CardOuter {
   width: 100%;
   color: rgba(0, 0, 0, .7);
-  background-color: white;
+  margin-bottom: 10px;
+  background-color: rgb(255, 246, 193);
   box-sizing: border-box;
   border-radius: 10px;
-    & > .AvatarFrame {
+    &:last-child {
+      margin-bottom: 0;
+    }
+    & > div > .AvatarFrame {
       max-width: 100px;
-      max-height: 100px;
       box-sizing: border-box;
-      border-radius: 100%;
-      overflow: hidden;
+      border-radius: 10px;
+      width: 30%;
+      font-size: 14px;
+      text-align: center;
       & > img {
         width: 100%;
         height: auto;
@@ -119,7 +100,8 @@ h4 {
 }
 .CardInfo {
   box-sizing: border-box;
-  color: rgba(0, 0, 0, .4);
+  width: 70%;
+  color: rgba(0, 0, 0, .7);
   & > p {
     margin: 0;
   }
@@ -134,6 +116,34 @@ h4 {
 
 <script>
 export default {
-  name: 'BlogEntryPage'
+  name: 'BlogEntryPage',
+  data: function() {
+    return {
+      perPage: 5,
+    }
+  },
+  mounted: function () {
+    if (this.getUrlQuery()) {
+      this.$store.dispatch('transition/GET_SINGLE_BLOG_POST', { blogid: this.getUrlQuery() });
+    }
+  },
+  computed: {
+    blog: function() {
+      return this.$store.state.transition.blog
+    }
+  },
+  methods: {
+    goback: function () {
+      this.$router.push('/blog');
+    },
+    getUrlQuery: function () {
+      console.log(this.$route.query)
+      if (this.$route.query.blogid) {
+        return this.$route.query.blogid;
+      }
+      this.$router.push('/404');
+      return false;
+    }
+  }
 }
 </script>
