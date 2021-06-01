@@ -1,7 +1,8 @@
 export default function () {
   return {
     transition: false,
-    blogs: {},
+    blogs: null,
+    blog: null,
     perPage: 5,
   }
 }

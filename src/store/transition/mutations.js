@@ -14,7 +14,11 @@ export const SET_PER_PAGE = (state, val) => {
 }
 
 export const SET_BLOG_POSTS = (state, blogPosts) => {
-  state.blogs = {};
+  state.blogs = null;
   state.blogs = blogPosts;
-  console.log(state.blogs);
+}
+
+export const SET_BLOG_POST = (state, blogPost) => {
+  state.blog = null;
+  state.blog = blogPost;
 }
