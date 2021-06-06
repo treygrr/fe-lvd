@@ -32,3 +32,11 @@ export function GET_SINGLE_BLOG_POST ({ commit }, param) {
         commit('SET_BLOG_POST', response.data)
     })
 }
+
+export async function LOGIN ({commit}, formData) {
+    axios.post(`${api.url}login`, {
+        ...formData
+    }).then(response => {
+        console.log('login route response: ', response)
+    });
+}
