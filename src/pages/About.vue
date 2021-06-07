@@ -7,7 +7,7 @@
         </div>
         <div class="CardInfo q-pl-lg">
           <h2>Gilbert (Trey) Rogers</h2>
-          <p><b>Status:</b> Catching a bug!</p>
+          <p><b>Status:</b> Catching a Dunkaroo!</p>
         </div>
       </div>
       <div class="CardOuter q-pa-md">
