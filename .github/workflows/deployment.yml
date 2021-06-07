@@ -35,3 +35,4 @@ jobs:
           script: |
             cd $DIR1 
             ls -la
+            sudo quasar build spa
