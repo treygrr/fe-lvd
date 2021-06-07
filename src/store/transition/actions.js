@@ -34,9 +34,19 @@ export function GET_SINGLE_BLOG_POST ({ commit }, param) {
 }
 
 export async function LOGIN ({commit}, formData) {
-    axios.post(`${api.url}login`, {
-        ...formData
-    }).then(response => {
-        console.log('login route response: ', response)
+
+    axios.get(api.baseUrl + 'sanctum/csrf-cookie').then(response => {
+        console.log(response)
+        axios.post(`${api.url}login`, {
+            ...formData
+        }).then(response => {
+            console.log('login route response: ', response)
+            axios.get(`${api.url}test`).then(response => {
+                console.log('test url: ', response)
+            })
+        }).catch(error => {
+            console.log('Error from login request: ', error)
+        });
     });
+
 }
