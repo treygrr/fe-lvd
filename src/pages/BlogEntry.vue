@@ -7,13 +7,8 @@
     </section>
     <section class="Content">
       <div class="CardOuter q-pa-lg q-mb-smn">
-        <div class="flex row no-wrap">
-          <div class="AvatarFrame">
-            <img src="https://i.picsum.photos/id/250/200/200.jpg?hmac=23TaEG1txY5qYZ70amm2sUf0GYKo4v7yIbN9ooyqWzs" alt="User Avatar Photo">
-            <p class="q-mb-none">Gilbert Rogers</p>
-            <p class="q-mb-none">04/25/2022</p>
-          </div>
-          <div class="CardInfo q-pl-lg">
+        <div class="CardInfo">
+          <div class="CardInfo">
             <h2>{{ blog.title }}</h2>
             <div>
               {{ blog.content }}
@@ -22,12 +17,20 @@
               <span v-for="tag in blog.tags" :key="tag.id" class="TagCard">{{ tag.tag }}</span>          
             </div>
           </div>
+          <div class="AvatarFrame">
+            <img class="AvatarPhoto" src="https://i.picsum.photos/id/250/200/200.jpg?hmac=23TaEG1txY5qYZ70amm2sUf0GYKo4v7yIbN9ooyqWzs" alt="User Avatar Photo">
+            <div class="AvatarInfo">
+              <p class="q-mb-none"><b>Author: </b>{{ blog.user.name }}</p>
+              <p class="q-mb-none"><b>Date: </b>{{ blog.created_at }}</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
     <div style="height: 100px;" />
   </q-page>
 </template>
+
 <style lang="scss" scoped>
 .Page {
   width: 100vw;
@@ -84,29 +87,33 @@ h4 {
     &:last-child {
       margin-bottom: 0;
     }
-    & > div > .AvatarFrame {
-      max-width: 100px;
-      box-sizing: border-box;
-      border-radius: 10px;
-      width: 30%;
-      font-size: 14px;
-      text-align: center;
-      & > img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-      }
-  }
 }
 .CardInfo {
   box-sizing: border-box;
-  width: 70%;
+  width: 100%;
   color: rgba(0, 0, 0, .7);
   & > p {
     margin: 0;
   }
 }
-@media only screen and (max-width: 600px) {
+.AvatarFrame {
+  display: flex;
+  margin-top: 5px;
+}
+.AvatarPhoto {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.AvatarInfo {
+  width: 100%;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media only screen and (max-width: 900px) {
   .Content {
     width: 100%;
     box-sizing: border-box;
