@@ -10,7 +10,7 @@
 
     </q-header>
     <q-footer style="background-color: transparent; text-align: center;">
-      <p style="position: relative; z-index: 101;">Designed and created by: Gilbert Rogers © 2021</p>
+      <p class="FooterText" style="position: relative; z-index: 101;">Designed and created by: Gilbert Rogers © 2021</p>
       <div id="BeachSceneWrapper">
         <div id="BeachSceneRelative">
           <div id="DarkBlueWave" :style="`background-image: url('${ require('assets/DarkBlueWave.png') }');`">
