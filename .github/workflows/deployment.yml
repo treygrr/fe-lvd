@@ -25,8 +25,7 @@ jobs:
       - name: ssh pipeline 1
         uses: cross-the-world/ssh-pipeline@master
         env:
-          WELCOME: "ssh pipeline"
-          DIR2: "/home/pi/trey/"
+          DIR1: "/home/pi/trey/fe-lvd/dev"
         with:
           host: ${{ secrets.SSH_HOST_NAME }}
           user: ${{ secrets.SSH_USERNAME}}
@@ -34,5 +33,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           connect_timeout: 10s
           script: |
+            cd $DIR1 
             ls -la
-            echo $WELCOME
