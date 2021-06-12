@@ -1,5 +1,6 @@
 import axios from 'axios'
 import api from '../../boot/api'
+import { Notify } from 'quasar'
 
 export function CHANGE_PAGE (commit, param) {
     if (this.$router.history.current.path === param.path) return;
@@ -7,7 +8,6 @@ export function CHANGE_PAGE (commit, param) {
     setTimeout(() => {
         this.commit('transition/stopTransition')
         if (this.$router.history.current.path === param.path) return;
-        console.log({ path: param.path, query: param.blogid })
         this.$router.push({ path: param.path, query: {blogid: param.blogid} })
     }, 1000);
 }
@@ -33,20 +33,3 @@ export function GET_SINGLE_BLOG_POST ({ commit }, param) {
     })
 }
 
-export async function LOGIN ({commit}, formData) {
-
-    axios.get(api.baseUrl + 'sanctum/csrf-cookie').then(response => {
-        console.log(response)
-        axios.post(`${api.url}login`, {
-            ...formData
-        }).then(response => {
-            console.log('login route response: ', response)
-            axios.get(`${api.url}test`).then(response => {
-                console.log('test url: ', response)
-            })
-        }).catch(error => {
-            console.log('Error from login request: ', error)
-        });
-    });
-
-}

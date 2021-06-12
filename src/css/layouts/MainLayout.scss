@@ -5,6 +5,9 @@ html, body {
     margin: 0;
     height: 100vh;
 }
+.Welcome {
+    color: slategray;
+}
 .header {
     height: 10vh;
     z-index: 0;
@@ -118,7 +121,7 @@ nav {
 }
 
 .FooterText {
-    bottom: -3vh;
+    bottom: -10px;
 }
 
 @keyframes Waves {

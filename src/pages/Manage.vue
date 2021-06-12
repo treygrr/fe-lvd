@@ -3,15 +3,12 @@
     <div class="text-white text-center q-pa-md flex column flex-center q-pa-md Wrapper">
         <div class="Width PageTitle">
             <div class="Title">
-                Admin Panel
+                Manage Blogs Panel
             </div>
         </div>
         <div class="Width">
           <div v-if="logged" class="Welcome">Welcome, {{ user.name }}!</div>
-            <q-input v-if="!logged" class="Width" bg-color="white" square filled v-model="formData.email" label="email" dense />
-            <q-input v-if="!logged" class="Width" bg-color="white" square filled v-model="formData.password" label="password" dense />
-            <q-btn v-if="!logged" class="Button full-width no-shadow" @click="login()" square color="primary">Login</q-btn>
-            <q-btn v-if="logged" class="Button q-mt-md full-width no-shadow" @click="logout()" square color="accent">Logout</q-btn>
+          <q-btn v-if="logged" class="Button q-mt-md full-width no-shadow" @click="logout()" square color="accent">Logout</q-btn>
         </div>
     </div>
   </q-page>
@@ -63,7 +60,7 @@
 
 <script>
 export default {
-  name: 'Login',
+  name: 'Manage',
   data: function () {
       return {
           formData: {

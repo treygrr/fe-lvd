@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import transition from './transition'
+import user from './user'
 
 Vue.use(Vuex)
 
@@ -17,7 +18,8 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      transition
+      transition,
+      user
     },
 
     // enable strict mode (adds overhead!)

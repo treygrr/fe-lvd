@@ -1,6 +1,7 @@
 const router = require('../../router')
 
 export const startTransition = (state) => {
+  state.blog = null
   state.transition = true;
 }
 

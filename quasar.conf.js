@@ -7,7 +7,6 @@
 // https://v1.quasar.dev/quasar-cli/quasar-conf-js
 /* eslint-env node */
 const ESLintPlugin = require('eslint-webpack-plugin')
-
 module.exports = function (/* ctx */) {
   return {
     // https://v1.quasar.dev/quasar-cli/supporting-ts
@@ -97,7 +96,13 @@ module.exports = function (/* ctx */) {
       // directives: [],
       cssAddon: true,
       // Quasar plugins
-      plugins: []
+      plugins: ['Notify'],
+      config: {
+        // optional (v0.17+)
+        notify: {
+          // Notify defaults
+        }
+      },
     },
 
     // animations: 'all', // --- includes all animations

@@ -2,6 +2,10 @@
   <q-layout view="hHh Lpr lFf">
     <q-header style=" z-index: 101;" class="bg-white header">
       <nav class="flex justify-xs-center justify-sm-end items-center">
+        <div class="Welcome" v-if="user">
+          Welcome {{ user.name }}!
+        </div>
+        <q-btn v-if="logged" @click="toggleTrans('/manage')" :class="`navLink ${this.$router.currentRoute.path === '/manage'? 'surfboard': ''}`" flat text-color="orange">Manage</q-btn>
         <q-btn @click="toggleTrans('/')" :class="`navLink ${this.$router.currentRoute.path === '/'? 'surfboard': ''}`" flat text-color="orange">Home</q-btn>
         <q-btn @click="toggleTrans('/about')" :class="`navLink ${this.$router.currentRoute.path === '/about'? 'surfboard': ''}`" flat text-color="orange">About</q-btn>
         <q-btn @click="toggleTrans('/blog')" :class="`navLink ${this.$router.currentRoute.path === '/blog'? 'surfboard': ''}`" flat text-color="orange">Blog</q-btn>
@@ -38,10 +42,19 @@ import '../css/layouts/MainLayout.scss';
 
 export default {
   name: 'MainLayout',
+  beforeMount() {
+    this.$store.dispatch('user/CHECK_LOGIN_STATUS')
+  },
   components: {},
   computed: {
     transition: function() {
       return this.$store.state.transition.transition
+    },
+    logged: function() {
+      return this.$store.state.user.logged
+    },
+    user: function () {
+      return this.$store.state.user.data
     }
   },
   methods: {

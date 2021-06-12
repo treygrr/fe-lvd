@@ -144,7 +144,6 @@ export default {
       this.$router.push('/blog');
     },
     getUrlQuery: function () {
-      console.log(this.$route.query)
       if (this.$route.query.blogid) {
         return this.$route.query.blogid;
       }
