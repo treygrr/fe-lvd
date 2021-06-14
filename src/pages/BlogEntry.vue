@@ -8,7 +8,7 @@
     <section class="Content">
       <div class="CardOuter q-pa-lg q-mb-smn">
         <div class="BlogHeadImageContainer">
-          <img class="HeadImage" :src="`${this.$api.baseUrl + blog.image.path}`">
+          <img v-if="blog.image" class="HeadImage" :src="`${this.$api.baseUrl + blog.image.path}`">
         </div>
         <div class="CardInfo">
           <div class="CardInfo">

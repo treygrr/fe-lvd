@@ -1,15 +1,16 @@
 <template>
   <q-page v-if="blogs" style="background-color: rgba(255,255,255, .4); box-sizing: border-box;" class="Page flex row justify-center content-center items-center q-pa-sm">
-    <section class="Content">
-      <div v-for="blog in blogs.data" :key="blog.id" class="CardOuter q-pa-lg q-mb-smn">
-        <div @click="gotopage(`/blog/read/`, blog.id)">
+    <section class="Content flex row justify-between content-center items-center">
+      <div v-for="blog in blogs.data" :key="blog.id" class="CardOuter q-mb-smn">
+        <img v-if="blog.image" class="HeadImage" :src="`${$api.baseUrl + blog.image.path}`">
+        <div class="Z-TOP q-pa-md" @click="gotopage(`/blog/read/`, blog.id)">
           <div class="CardInfo">
             <h2>{{ blog.title }}</h2>
             <div class="flex row">
               <span v-for="tag in blog.tags" :key="tag.id" class="TagCard">{{ tag.tag }}</span>          
             </div>
           </div>
-          <div class="AvatarFrame">
+          <div class="Z-TOP AvatarFrame">
             <img class="AvatarPhoto" src="https://i.picsum.photos/id/250/200/200.jpg?hmac=23TaEG1txY5qYZ70amm2sUf0GYKo4v7yIbN9ooyqWzs" alt="User Avatar Photo">
             <div class="AvatarInfo">
               <p class="q-mb-none"><b>Author: </b> {{ blog.user.name }} </p>
@@ -29,13 +30,20 @@
         <p style="margin: 0;" class="q-ml-lg q-mr-lg">{{ blogs.current_page }} of {{ blogs.total }}</p>
         <q-btn @click="loadPage(blogs.next_page_url)" flat color="orange" icon="chevron_right"></q-btn>
       </div>
-      <div>
-      </div>
     </section>
     <div style="height: 100px;" />
   </q-page>
 </template>
 <style lang="scss" scoped>
+.Z-TOP {
+  z-index: 20;
+}
+.HeadImage {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  z-index: -10;
+}
 .Page {
   width: 100vw;
   box-sizing: border-box;
@@ -82,9 +90,12 @@ h4 {
 }
 
 .CardOuter {
-  width: 100%;
+  z-index: 10;
+  overflow: hidden;
+  width: 49%;
   color: rgba(0, 0, 0, .7);
   margin-bottom: 10px;
+  position: relative;
   background-color: rgb(255, 246, 193);
   box-sizing: border-box;
   border-radius: 10px;
@@ -132,6 +143,7 @@ export default {
   data: function() {
     return {
       perPage: 5,
+      $api: this.$api
     }
   },
   mounted: async function () {
