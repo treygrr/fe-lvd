@@ -57,7 +57,7 @@ nav {
     background-size: contain;
     background-position: bottom;
     background-repeat: no-repeat;
-    background-origin: content-box;
+    background-origin: border-box;
 }
 
 .PageContainer {
@@ -118,10 +118,6 @@ nav {
     bottom: 0;
     width: auto;
     height: 10vh;
-}
-
-.FooterText {
-    bottom: -10px;
 }
 
 @keyframes Waves {

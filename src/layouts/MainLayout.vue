@@ -2,9 +2,6 @@
   <q-layout view="hHh Lpr lFf">
     <q-header style=" z-index: 101;" class="bg-white header">
       <nav class="flex justify-xs-center justify-sm-end items-center">
-        <div class="Welcome" v-if="user">
-          Welcome {{ user.name }}!
-        </div>
         <q-btn v-if="logged" @click="toggleTrans('/manage')" :class="`navLink ${this.$router.currentRoute.path === '/manage'? 'surfboard': ''}`" flat text-color="orange">Manage</q-btn>
         <q-btn @click="toggleTrans('/')" :class="`navLink ${this.$router.currentRoute.path === '/'? 'surfboard': ''}`" flat text-color="orange">Home</q-btn>
         <q-btn @click="toggleTrans('/about')" :class="`navLink ${this.$router.currentRoute.path === '/about'? 'surfboard': ''}`" flat text-color="orange">About</q-btn>
@@ -14,7 +11,7 @@
 
     </q-header>
     <q-footer style="background-color: transparent; text-align: center;">
-      <p class="FooterText" style="position: relative; z-index: 101;">Designed and created by: Gilbert Rogers © 2021</p>
+      <p class="FooterText" style="position: relative; z-index: 101;">Designed and Coded by: Gilbert Rogers © 2021</p>
       <div id="BeachSceneWrapper">
         <div id="BeachSceneRelative">
           <div id="DarkBlueWave" :style="`background-image: url('${ require('assets/DarkBlueWave.png') }');`">
@@ -38,23 +35,20 @@
 </template>
 
 <script>
-import '../css/layouts/MainLayout.scss';
+import '../css/layouts/MainLayout.scss'
+import VueMarkdown from 'vue-markdown'
 
 export default {
+  
   name: 'MainLayout',
-  beforeMount() {
-    this.$store.dispatch('user/CHECK_LOGIN_STATUS')
+  components: {
   },
-  components: {},
   computed: {
     transition: function() {
       return this.$store.state.transition.transition
     },
     logged: function() {
       return this.$store.state.user.logged
-    },
-    user: function () {
-      return this.$store.state.user.data
     }
   },
   methods: {

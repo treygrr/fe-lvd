@@ -15,4 +15,6 @@ if (process.env.BUILD_MODE === 'production') {
     api.baseUrl = process.env.PROD_BASE_URL
 }
 
+Vue.prototype.$api = { ...api };
+
 export default { ...api }

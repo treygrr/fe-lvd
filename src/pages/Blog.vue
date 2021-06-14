@@ -1,12 +1,10 @@
 <template>
   <q-page v-if="blogs" style="background-color: rgba(255,255,255, .4); box-sizing: border-box;" class="Page flex row justify-center content-center items-center q-pa-sm">
     <section class="Content">
-      <div v-for="blog in blogs.data" :key="blog.id" @click="gotopage(`/blog/read/`, blog.id)"  class="CardOuter q-pa-lg q-mb-smn">
+      <div v-for="blog in blogs.data" :key="blog.id" class="CardOuter q-pa-lg q-mb-smn">
+        <div @click="gotopage(`/blog/read/`, blog.id)">
           <div class="CardInfo">
             <h2>{{ blog.title }}</h2>
-            <div>
-              {{ blog.content.slice(0, 200) + '...'}}
-            </div>
             <div class="flex row">
               <span v-for="tag in blog.tags" :key="tag.id" class="TagCard">{{ tag.tag }}</span>          
             </div>
@@ -14,11 +12,16 @@
           <div class="AvatarFrame">
             <img class="AvatarPhoto" src="https://i.picsum.photos/id/250/200/200.jpg?hmac=23TaEG1txY5qYZ70amm2sUf0GYKo4v7yIbN9ooyqWzs" alt="User Avatar Photo">
             <div class="AvatarInfo">
-              <p class="q-mb-none"><b>Author: </b>Rogers</p>
-              <p class="q-mb-none"><b>Date: </b>4/25/2022</p>
+              <p class="q-mb-none"><b>Author: </b> {{ blog.user.name }} </p>
+              <p class="q-mb-none"><b>Date: </b>{{ formatDate(blog.user.created_at) }}</p>
             </div>
           </div>
         </div>
+        <div v-if="user" class="q-mt-lg">
+          <q-btn filled class="q-mr-lg" v-on:click="deleteBlog(blog.id)">Delete Entry {{ blog.id }}</q-btn>
+          <q-btn filled v-on:click="editBlog(blog.id)">Edit Entry</q-btn>
+        </div>
+      </div>
     </section>
     <section class="Controls flex no-wrap justify-between items-center q-mb-sm">
       <div class="ForwardBack flex row no-wrap justify-around items-center">
@@ -144,6 +147,7 @@ h4 {
 </style>
 
 <script>
+import { date } from 'quasar'
 export default {
   name: 'BlogPage',
   data: function() {
@@ -160,6 +164,9 @@ export default {
   computed: {
     blogs: function() {
       return this.$store.state.transition.blogs
+    },
+    user: function() {
+      return this.$store.state.user.data
     }
   },
   methods: {
@@ -173,6 +180,18 @@ export default {
       if(!page)return;
       this.$store.dispatch('transition/GET_BLOG_POSTS_PAGE', { url: page });
     },
+    deleteBlog: async function (id) {
+      await this.$store.dispatch('blog/DELETE_BLOG_POST', id);
+      this.$store.dispatch('transition/GET_BLOG_POSTS');
+    },
+    editBlog: async function (id) {
+      await this.$store.dispatch('transition/CHANGE_PAGE', { path: '/manage/edit/' + id });
+    },
+    formatDate: function (datecode) {
+      let newDate = new Date(datecode);
+      let formatDate = date.formatDate(newDate, 'MMMM DD, YYYY')
+      return formatDate
+    }
   }
 }
 </script>

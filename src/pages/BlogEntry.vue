@@ -7,12 +7,12 @@
     </section>
     <section class="Content">
       <div class="CardOuter q-pa-lg q-mb-smn">
+        <div class="BlogHeadImageContainer">
+          <img class="HeadImage" :src="`${this.$api.baseUrl + blog.image.path}`">
+        </div>
         <div class="CardInfo">
           <div class="CardInfo">
-            <h2>{{ blog.title }}</h2>
-            <div>
-              {{ blog.content }}
-            </div>
+            <div v-html="blog.content" />
             <div class="flex row">
               <span v-for="tag in blog.tags" :key="tag.id" class="TagCard">{{ tag.tag }}</span>          
             </div>
@@ -51,6 +51,18 @@
   }
 }
 
+.BlogHeadImageContainer {
+
+
+}
+
+.HeadImage {
+  width: 100%;
+  height: 400px;
+  border-radius: 24px;
+  object-fit: cover;
+  object-position: center -150px;
+}
 h2 {
   font-size: 24px;
   font-weight: 700;
@@ -81,7 +93,6 @@ h4 {
   width: 100%;
   color: rgba(0, 0, 0, .7);
   margin-bottom: 10px;
-  background-color: rgb(255, 246, 193);
   box-sizing: border-box;
   border-radius: 10px;
     &:last-child {

@@ -4,18 +4,17 @@
         <h1 class="mainh1">I'm a
           <transition name="slide-fade" mode="out-in">
             <span class="rights" :key="0" v-if="currentlyShowing === 0">Human Rights Advocate✊</span>
-            <span class="design" :key="1" v-if="currentlyShowing === 1">designer🧑‍🎨</span>
+            <span class="design" :key="1" v-if="currentlyShowing === 1">DeSiGneR📐</span>
             <span class="developer" :key="2" v-if="currentlyShowing === 2">Software Developer👨‍💻</span>
-            <span class="tinker" :key="3" v-if="currentlyShowing === 3">Disney Fan🏰</span>
-            <span class="nerd" :key="4" v-if="currentlyShowing === 4">Computer Nerd🤓</span>
-            <span class="gaymer" :key="5" v-if="currentlyShowing === 5">Gaymer<span style="color: white;">🏳️‍🌈</span></span>
+            <span class="tinker" :key="3" v-if="currentlyShowing === 3">Artist🧑‍🎨</span>
+            <span class="nerd gaymer" :key="4" v-if="currentlyShowing === 4">Nerd<span style="color: white;">🤓🏳️‍🌈</span></span>
           </transition>
         </h1>
     </div>
   </q-page>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   .slide-fade-enter-active {
     transition: all .3s ease;
   }
@@ -39,52 +38,34 @@
   }
   .rights {
     font-family: human;
-    color: #065aba;
     font-size: 5vw;
     font-weight: 400;
     color: #eb4141;
-    border-bottom: 4px solid #eb4141;
   }
   .design {
-    font-family: design;
-    color: #065aba;
-    font-size: 5vw;
-    font-weight: 900;
+    font-family: design !important;
     color: #ff9147;
-    border-bottom: 4px solid #ff9147;
   }
   .developer {
     font-family: monospace;
-    color: #065aba;
     font-size: 5vw;
     font-weight: 400;
-    color: #000000;
-    border-bottom: 4px solid #000000;
+    color: indigo;
   }
   .tinker {
-    font-family: tinker;
-    color: #065aba;
+    font-family: fancy;
     font-size: 7vw;
     line-height: 9vw;
     font-weight: 400;
     color: #35ff2e;
-    border-bottom: 4px solid #35ff2e;
   }
   .nerd {
     font-family: nerd;
-    color: #065aba;
     font-size: 5vw;
     line-height: 7vw;
     font-weight: 100;
-    color: #2ebdff;
-    border-bottom: 4px solid #2ebdff;
   }
   .gaymer {
-    font-family: gamer, Helvetica, sans-serif;
-    font-size: 3vw;
-    line-height: 3vw;
-    font-weight: 300;
-    border-bottom: 4px solid #ffee00;
     background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);   -webkit-background-clip: text;
     color: transparent;
   }
@@ -106,7 +87,7 @@ export default {
   data: () => {
     return {
       currentlyShowing: 0,
-      itemsCount: 5
+      itemsCount: 4
     }
   }
 }

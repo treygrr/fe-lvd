@@ -3,12 +3,12 @@
     <div class="text-white text-center q-pa-md flex column flex-center q-pa-md Wrapper">
         <div class="Width PageTitle">
             <div class="Title">
-                Manage Blogs Panel
+                Admin Panel
             </div>
         </div>
         <div class="Width">
-          <div v-if="logged" class="Welcome">Welcome, {{ user.name }}!</div>
-          <q-btn v-if="logged" class="Button q-mt-md full-width no-shadow" @click="logout()" square color="accent">Logout</q-btn>
+            <q-btn class="Button q-mt-md full-width no-shadow" @click="createBlog()" square color="accent">Create new Blog</q-btn>
+            <q-btn class="Button q-mt-md full-width no-shadow" @click="logout()" square color="accent">Logout</q-btn>
         </div>
     </div>
   </q-page>
@@ -16,7 +16,6 @@
 
 <style lang="scss" scoped>
 .Welcome {
-    font-family: fancy;
     font-weight: 900;
     color: $primary;
     margin-top: 16px;
@@ -26,12 +25,10 @@
 }
 .Button {
     padding-top: 5px;
-    font-family: nerd;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
 .Title {
-    font-family: nerd;
     font-weight: 900;
     padding-top: 10px;
     font-size: 24px;
@@ -52,22 +49,16 @@
 }
 </style>
 
-<style>
-.q-btn--actionable.q-btn--standard:active .q-btn__wrapper:before, .q-btn--actionable.q-btn--standard.q-btn--active .q-btn__wrapper:before, .q-btn__wrapper:before {
-    box-shadow: none !important;
-}
-</style>
-
 <script>
+
 export default {
   name: 'Manage',
   data: function () {
-      return {
-          formData: {
-            email: null,
-            password: null,
-          }
-      }
+    return {
+      
+    }
+  },
+  components: {
   },
   mounted() {
   },
@@ -79,22 +70,13 @@ export default {
       return this.$store.state.user.data
     }
   },
-  watch: {
-    logged: function(newVal, oldVal) {
-      console.log(newVal, oldVal)
-      if (newVal === true) {
-        this.$router.push('/manage');
-      }
-    }
-  },
   methods: {
-      login: function () {
-        this.$store.dispatch('user/LOGIN', { ...this.formData });
-      },
-      logout: function () {
-        this.$store.dispatch('user/LOGOUT');
-      }
-      
+    logout: function () {
+      this.$store.dispatch('user/LOGOUT');
+    },
+    createBlog: function () {
+      this.$store.dispatch('transition/CHANGE_PAGE', { path: '/manage/create' });
+    }
   },
 }
 </script>

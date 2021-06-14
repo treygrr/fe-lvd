@@ -18,40 +18,18 @@ export async function LOGIN ({commit}, formData) {
                     color: 'primary',
                 message: 'Logged in!'
                 })
-                this.commit('user/LOG_IN')
+                this.commit('user/LOG_IN', response.data)
             }
-            console.log('LOGIN: ', response)
         })
         .catch(error => {
-            console.log('Error Login: ', error.response.data.errors)
-            if (!error?.response?.data?.errors?.email || !error?.response?.data?.errors?.password) return;
-            error.response.data.errors.email.forEach(element => {
-                Notify.create({
-                    progress: true,
-                    type: 'negative',
-                    timeout: 3000,
-                    position: 'top',
-                    color: 'primary',
-                    message: element
-                })
-            });
-            error.response.data.errors.password.forEach(element => {
-                Notify.create({
-                    progress: true,
-                    type: 'negative',
-                    timeout: 3000,
-                    position: 'top',
-                    color: 'primary',
-                    message: element
-                })
-            });
+            console.log('Error Login: ', error)
         });
     });
 }
 
 export async function LOGOUT ({commit}, formData) {
     axios.post(api.baseUrl + 'logout')
-    .then(response =>{
+    .then(response => {
         console.log('LOGOUT: ', response)
         Notify.create({
             timeout: 2000,
@@ -63,17 +41,11 @@ export async function LOGOUT ({commit}, formData) {
     })
 }
 
-export async function CHECK_LOGIN_STATUS ({commit}) {
-    axios.get(api.url + 'user')
-    .then(response => {
-        this.commit('user/LOG_IN');
-        this.commit('user/SET_DATA', response.data)
-        this.commit('transition/stopTransition');
-        return true;
-    })
-    .catch(error => {
-        this.commit('user/LOG_OUT')
-        this.commit('transition/stopTransition');
-        return false;
-    })
+export async function CHECK_LOGIN_STATUS ({commit}, formData) {
+    try {
+        const response = await axios.get(api.url + 'user');
+        this.commit('user/LOG_IN', response.data);
+        return response;
+    } catch (error) { }
 }
+

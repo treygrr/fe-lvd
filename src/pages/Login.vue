@@ -7,11 +7,10 @@
             </div>
         </div>
         <div class="Width">
-          <div v-if="logged" class="Welcome">Welcome, {{ user.name }}!</div>
-            <q-input v-if="!logged" class="Width" bg-color="white" square filled v-model="formData.email" label="email" dense />
-            <q-input v-if="!logged" class="Width" bg-color="white" square filled v-model="formData.password" label="password" dense />
-            <q-btn v-if="!logged" class="Button full-width no-shadow" @click="login()" square color="primary">Login</q-btn>
-            <q-btn v-if="logged" class="Button q-mt-md full-width no-shadow" @click="logout()" square color="accent">Logout</q-btn>
+            <q-input class="Width" bg-color="white" square filled v-model="formData.email" label="email" dense />
+            <q-input class="Width" bg-color="white" square filled v-model="formData.password" label="password" dense />
+            <q-btn class="Button full-width no-shadow" @click="login()" square color="primary">Login</q-btn>
+            <q-btn class="Button q-mt-md full-width no-shadow" @click="logout()" square color="accent">Logout</q-btn>
         </div>
     </div>
   </q-page>
@@ -67,8 +66,8 @@ export default {
   data: function () {
       return {
           formData: {
-            email: null,
-            password: null,
+            email: 'gilbertrrogers@icloud.com',
+            password: 'password',
           }
       }
   },
@@ -78,26 +77,22 @@ export default {
     logged: function () {
       return this.$store.state.user.logged
     },
-    user: function () {
-      return this.$store.state.user.data
-    }
   },
   watch: {
-    logged: function(newVal, oldVal) {
-      console.log(newVal, oldVal)
+    logged: function (newVal, oldVal) {
       if (newVal === true) {
-        this.$router.push('/manage');
+        console.log(this.$store.getters['user/logged'])
+        this.$router.push('/manage')
       }
-    }
+    },
   },
   methods: {
-      login: function () {
-        this.$store.dispatch('user/LOGIN', { ...this.formData });
-      },
-      logout: function () {
-        this.$store.dispatch('user/LOGOUT');
-      }
-      
+    login: function () {
+      this.$store.dispatch('user/LOGIN', { ...this.formData });
+    },
+    logout: function () {
+      this.$store.dispatch('user/LOGOUT');
+    }
   },
 }
 </script>

@@ -3,4 +3,8 @@ import axios from 'axios'
 
 axios.defaults.withCredentials = true
 
-Vue.prototype.$axios = axios
+axios.defaults.headers = {
+    "Accept": "application/json"
+}
+
+Vue.prototype.$axios = axios;
