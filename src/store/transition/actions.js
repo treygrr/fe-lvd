@@ -18,6 +18,13 @@ export function GET_BLOG_POSTS ({commit}) {
     })
 }
 
+export function GET_BLOG_POSTS_PAGE ({commit}, path) {
+    axios.get(`${path}`)
+        .then(response => {
+        commit('SET_BLOG_POSTS', response.data)
+    })
+}
+
 
 export function GET_SINGLE_BLOG_POST ({ commit }, param) {
     axios.get(`${api.url}blog/${param.blogid}`)

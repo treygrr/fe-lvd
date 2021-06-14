@@ -24,33 +24,12 @@
       </div>
     </section>
     <section class="Controls flex no-wrap justify-between items-center q-mb-sm">
-      <div class="ForwardBack flex row no-wrap justify-around items-center">
+      <div v-if="!(blogs.current_page === 1 && blogs.data.length < 19)" class="ForwardBack flex row no-wrap justify-around items-center">
         <q-btn :disabled="blogs.prev_page_url === null? true: false" @click="loadPage(blogs.prev_page_url)" flat color="orange" icon="chevron_left"></q-btn>
         <p style="margin: 0;" class="q-ml-lg q-mr-lg">{{ blogs.current_page }} of {{ blogs.total }}</p>
         <q-btn @click="loadPage(blogs.next_page_url)" flat color="orange" icon="chevron_right"></q-btn>
       </div>
       <div>
-        <q-btn-dropdown flat color="primary" :label="`${this.perPage} Per Page`">
-          <q-list>
-            <q-item clickable v-close-popup @click="setPerPage(5)">
-              <q-item-section>
-                <q-item-label>5</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-close-popup @click="setPerPage(10)">
-              <q-item-section>
-                <q-item-label>10</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-close-popup @click="setPerPage(15)">
-              <q-item-section>
-                <q-item-label>15</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown>
       </div>
     </section>
     <div style="height: 100px;" />
@@ -177,8 +156,9 @@ export default {
       this.perPage = amount;
     },
     loadPage: function (page) {
+      console.log(page)
       if(!page)return;
-      this.$store.dispatch('transition/GET_BLOG_POSTS_PAGE', { url: page });
+      this.$store.dispatch('transition/GET_BLOG_POSTS_PAGE', page );
     },
     deleteBlog: async function (id) {
       await this.$store.dispatch('blog/DELETE_BLOG_POST', id);
