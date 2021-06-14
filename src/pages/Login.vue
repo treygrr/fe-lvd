@@ -66,8 +66,8 @@ export default {
   data: function () {
       return {
           formData: {
-            email: 'gilbertrrogers@icloud.com',
-            password: 'password',
+            email: null,
+            password: null,
           }
       }
   },
