@@ -20,6 +20,7 @@ Vue.use(VueRouter)
 
 export default async function ({store}/* { store, ssrContext } */) {
   const Router = new VueRouter({
+    mode: 'history',
     scrollBehavior: () => ({ x: 0, y: 0 }),
     routes,
 
