@@ -2,16 +2,55 @@
   <q-layout view="hHh Lpr lFf">
     <q-header style=" z-index: 101;" class="bg-white header">
       <nav class="flex justify-xs-center justify-sm-end items-center">
-        <q-btn v-if="logged" @click="toggleTrans('/manage')" :class="`navLink ${this.$router.currentRoute.path === '/manage'? 'surfboard': ''}`" flat text-color="orange">Manage</q-btn>
-        <q-btn @click="toggleTrans('/')" :class="`navLink ${this.$router.currentRoute.path === '/'? 'surfboard': ''}`" flat text-color="orange">Home</q-btn>
-        <q-btn @click="toggleTrans('/about')" :class="`navLink ${this.$router.currentRoute.path === '/about'? 'surfboard': ''}`" flat text-color="orange">About</q-btn>
-        <q-btn @click="toggleTrans('/blog')" :class="`navLink ${this.$router.currentRoute.path === '/blog'? 'surfboard': ''}`" flat text-color="orange">Blog</q-btn>
-        <q-btn disabled @click="toggleTrans('/projects')" :class="`navLink ${this.$router.currentRoute.path === '/projects'? 'surfboard': ''}`" flat text-color="orange">Projects</q-btn>
+        <button @click="toggleTrans('/')" :class="`ButtonWave q-mr-md ${this.$router.currentRoute.path !== '/' ? 'SelectedButton':''}`">
+          <span tabindex="2" class="MenuText">Home</span>
+          <div v-if="this.$router.currentRoute.path === '/'"
+            class="DarkBlueWave-btn waves"
+            :style="`background-image: url('${ require('assets/DarkBlueWave.png') }');`"
+          />
+          <div v-if="this.$router.currentRoute.path === '/'" 
+            class="LightBlueWave-btn waves" 
+            :style="`background-image: url('${ require('assets/LightBlueWave.png') }');`" 
+          />
+        </button>
+        <button v-if="logged" @click="toggleTrans('/manage')" :class="`ButtonWave q-mr-md ${this.$router.currentRoute.path !== '/manage' ? 'SelectedButton':''}`">
+          <span tabindex="3" class="MenuText">Manage</span>
+          <div v-if="this.$router.currentRoute.path === '/manage'"
+            class="DarkBlueWave-btn waves"
+            :style="`background-image: url('${ require('assets/DarkBlueWave.png') }');`"
+          />
+          <div v-if="this.$router.currentRoute.path === '/manage'" 
+            class="LightBlueWave-btn waves" 
+            :style="`background-image: url('${ require('assets/LightBlueWave.png') }');`" 
+          />
+        </button>
+        <button @click="toggleTrans('/about')" :class="`ButtonWave q-mr-md ${this.$router.currentRoute.path !== '/about' ? 'SelectedButton':''}`">
+          <span tabindex="4" class="MenuText">About</span>
+          <div v-if="this.$router.currentRoute.path === '/about'"
+            class="DarkBlueWave-btn waves"
+            :style="`background-image: url('${ require('assets/DarkBlueWave.png') }');`"
+          />
+          <div v-if="this.$router.currentRoute.path === '/about'" 
+            class="LightBlueWave-btn waves" 
+            :style="`background-image: url('${ require('assets/LightBlueWave.png') }');`" 
+          />
+        </button>
+        <button @click="toggleTrans('/blog')" :class="`ButtonWave q-mr-md ${this.$router.currentRoute.path !== '/blog' ? 'SelectedButton':''}`">
+          <span tabindex="5" class="MenuText">Blog</span>
+          <div v-if="this.$router.currentRoute.path === '/blog'"
+            class="DarkBlueWave-btn waves"
+            :style="`background-image: url('${ require('assets/DarkBlueWave.png') }');`"
+          />
+          <div v-if="this.$router.currentRoute.path === '/blog'" 
+            class="LightBlueWave-btn waves" 
+            :style="`background-image: url('${ require('assets/LightBlueWave.png') }');`" 
+          />
+        </button>
       </nav>
 
     </q-header>
     <q-footer style="background-color: transparent; text-align: center;">
-      <p class="FooterText" style="position: relative; z-index: 101;">Designed and Coded by: Gilbert Rogers © 2021</p>
+      <p class="FooterText q-mb-none" style="position: relative; z-index: 101;">Designed and Coded by: Gilbert Rogers © 2021</p>
       <div id="BeachSceneWrapper">
         <div id="BeachSceneRelative">
           <div id="DarkBlueWave" :style="`background-image: url('${ require('assets/DarkBlueWave.png') }');`">
