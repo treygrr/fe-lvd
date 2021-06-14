@@ -11,17 +11,17 @@
           <img v-if="blog.image" class="HeadImage" :src="`${this.$api.baseUrl + blog.image.path}`">
         </div>
         <div class="CardInfo">
-          <div class="CardInfo">
-            <div v-html="blog.content" />
-            <div class="flex row">
-              <span v-for="tag in blog.tags" :key="tag.id" class="TagCard">{{ tag.tag }}</span>          
-            </div>
-          </div>
-          <div class="AvatarFrame">
+          <div class="AvatarFrame q-pt-md">
             <img class="AvatarPhoto" src="https://i.picsum.photos/id/250/200/200.jpg?hmac=23TaEG1txY5qYZ70amm2sUf0GYKo4v7yIbN9ooyqWzs" alt="User Avatar Photo">
             <div class="AvatarInfo">
               <p class="q-mb-none"><b>Author: </b>{{ blog.user.name }}</p>
               <p class="q-mb-none"><b>Date: </b>{{ blog.created_at }}</p>
+            </div>
+          </div>
+          <div class="CardInfo q-pt-md">
+            <div v-html="blog.content" />
+            <div class="flex row">
+              <span v-for="tag in blog.tags" :key="tag.id" class="TagCard">{{ tag.tag }}</span>          
             </div>
           </div>
         </div>
@@ -30,7 +30,34 @@
     <div style="height: 100px;" />
   </q-page>
 </template>
-
+<style>
+h1 {
+  padding: 0;
+  font-weight: 900;
+  margin: 0;
+  font-size: 3em;
+}
+h2 {
+  padding: 0;
+  margin: 0;
+  font-size: 2.7em;
+}
+h3 {
+  padding: 0;
+  margin: 0;
+  font-size: 2.4em;
+}
+h4 {
+  padding: 0;
+  margin: 0;
+  font-size: 2.1em;
+}
+h5 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.8em;
+}
+</style>
 <style lang="scss" scoped>
 .Page {
   width: 100vw;

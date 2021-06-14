@@ -133,6 +133,9 @@ h4 {
     width: 100%;
     box-sizing: border-box;
   }
+  .CardOuter {
+    width: 100%;
+  }
 }
 </style>
 
