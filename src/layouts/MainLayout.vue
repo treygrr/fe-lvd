@@ -49,6 +49,11 @@
       </nav>
 
     </q-header>
+    <q-page-container class="PageContainer" :class="this.transition? 'PageContainerTrans':''">
+        <router-view>
+        </router-view>
+    </q-page-container>
+    <div style="height: 10vh" />
     <q-footer style="background-color: transparent; text-align: center;">
       <p class="FooterText q-mb-none" style="position: relative; z-index: 101;">Designed and Coded by: Gilbert Rogers © 2021</p>
       <div id="BeachSceneWrapper">
@@ -66,10 +71,6 @@
         </div>
       </div>
     </q-footer>
-    <q-page-container class="PageContainer" :class="this.transition? 'PageContainerTrans':''">
-        <router-view>
-        </router-view>
-    </q-page-container>
   </q-layout>
 </template>
 
