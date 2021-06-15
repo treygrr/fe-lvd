@@ -198,6 +198,77 @@ nav {
 }
 
 @media only screen and (max-width: 600px) {
+    @keyframes MiniWaves {
+        0% { 
+            transform: translate3d(0, 0, 0);
+        }
+        100% { transform: translate3d(-250px, 0, 0); }
+    }
+
+    .ButtonWave {
+        z-index: 0;
+        display: block;
+        position: relative;
+        overflow: hidden;
+        background-color: rgb(255, 242, 198);
+        height: 50px;
+        border-radius: 10px;
+        border: none;
+        transition: background-color .25s ease-in-out;
+    }
+    .ButtonWave:last-child {
+        margin-right: 3vw;
+    }
+    .ButtonWave:first-child {
+        margin-left: 3vw;
+    }
+    .ButtonWave:focus {
+        background-color: lightpink;
+    }
+    .ButtonWave:hover {
+        background-color: rgb(255, 242, 198);
+    }
+    .MenuText {
+        color: #ff9800;
+        font-size: 20px;
+        font-family: fancy;
+        vertical-align: center;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+    .SelectedButton {
+        background-color: white;
+    }
+
+    .DarkBlueWave-btn {
+        z-index: 1;
+        position: absolute;
+        background-repeat: repeat-x;
+        bottom: 0;
+        left: 0;
+        width: 500px;
+        height: 12.5px;
+        opacity: 1;
+        background-position: top left;
+        background-size: 250px 12.5px;
+        animation: MiniWaves 10s linear infinite;
+    }
+
+    .LightBlueWave-btn {
+        z-index: 1;
+        position: absolute;
+        background-repeat: repeat-x;
+        bottom: 0;
+        left: 0;
+        width: 500px;
+        height: 12.5px;
+        opacity: 1;
+        background-position: top left;
+        background-size: 250px 12.5px;
+        animation: MiniWaves 15s linear infinite;
+    }
+        
     #BeachSceneWrapper {
         position: absolute;
         bottom: 0;

@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh Lpr lFf">
     <q-header style=" z-index: 101;" class="bg-white header">
-      <nav class="flex justify-xs-center justify-sm-end items-center">
+      <nav class="flex justify-xs-center justify-sm-end items-center no-wrap">
         <button @click="toggleTrans('/')" :class="`ButtonWave q-mr-md ${this.$router.currentRoute.path !== '/' ? 'SelectedButton':''}`">
           <span tabindex="2" class="MenuText">Home</span>
           <div v-if="this.$router.currentRoute.path === '/'"
@@ -35,7 +35,7 @@
             :style="`background-image: url('${ require('assets/LightBlueWave.png') }');`" 
           />
         </button>
-        <button @click="toggleTrans('/blog')" :class="`ButtonWave q-mr-md ${this.$router.currentRoute.path !== '/blog' ? 'SelectedButton':''}`">
+        <button @click="toggleTrans('/blog')" :class="`ButtonWave ${this.$router.currentRoute.path !== '/blog' ? 'SelectedButton':''}`">
           <span tabindex="5" class="MenuText">Blog</span>
           <div v-if="this.$router.currentRoute.path === '/blog'"
             class="DarkBlueWave-btn waves"
