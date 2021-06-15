@@ -36,5 +36,5 @@ jobs:
             cd $DIR1 
             ls -la
             git pull
-            sudo yarm install
+            sudo yarn install
             sudo quasar build spa
