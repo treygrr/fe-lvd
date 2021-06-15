@@ -1,6 +1,6 @@
 <template>
   <q-page class="text-orange text-center q-pa-md flex column flex-center q-pa-md">
-    <div class="text-white text-center q-pa-md flex column flex-center q-pa-md Wrapper">
+    <div class="Wrapper text-white text-center q-pa-md flex column flex-center q-pa-md">
         <div class="Width PageTitle">
             <div class="Title">
                 Admin Panel
@@ -39,11 +39,14 @@
     line-height: 50px;
 }
 .Wrapper {
+    box-sizing: border-box;
+    width: 90vw;
+    max-width: 400px;
     background-color: rgba(255, 204, 128, 0.178);
     border-radius: 4px;
 }
 .Width {
-    min-width: 400px;
+  width: 100%;
 }
 .PageTitle {
     background-color: $primary;

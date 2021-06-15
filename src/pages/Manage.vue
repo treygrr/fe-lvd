@@ -24,9 +24,6 @@
     line-height: 50px;
 }
 .Button {
-    padding-top: 5px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
 }
 .Title {
     font-weight: 900;
@@ -35,17 +32,18 @@
     line-height: 50px;
 }
 .Wrapper {
+    box-sizing: border-box;
+    width: 90vw;
+    max-width: 400px;
     background-color: rgba(255, 204, 128, 0.178);
     border-radius: 4px;
 }
 .Width {
-    min-width: 400px;
+  width: 100%;
 }
 .PageTitle {
     background-color: $primary;
     border-radius: 4px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
 }
 </style>
 
