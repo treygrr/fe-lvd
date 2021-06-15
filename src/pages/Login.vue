@@ -7,9 +7,9 @@
             </div>
         </div>
         <div class="Width">
-            <q-input class="Width" bg-color="white" square filled v-model="formData.email" label="email" dense />
-            <q-input class="Width" bg-color="white" square filled v-model="formData.password" label="password" dense />
-            <q-btn class="Button full-width no-shadow" @click="login()" square color="primary">Login</q-btn>
+            <q-input class="Width"  type="email" bg-color="white" square filled v-model="formData.email" label="email" dense />
+            <q-input class="Width" type="password" @keyup.enter="login()" bg-color="white" square filled v-model="formData.password" label="password" dense />
+            <a tabindex="0" @keyup.enter="login()"><q-btn class="Button LoginAnchor full-width no-shadow" @click="login()" square color="primary">Login</q-btn></a>
             <q-btn class="Button q-mt-md full-width no-shadow" @click="logout()" square color="accent">Logout</q-btn>
         </div>
     </div>
