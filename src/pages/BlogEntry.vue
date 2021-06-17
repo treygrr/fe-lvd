@@ -15,7 +15,7 @@
             <img class="AvatarPhoto" src="https://i.picsum.photos/id/250/200/200.jpg?hmac=23TaEG1txY5qYZ70amm2sUf0GYKo4v7yIbN9ooyqWzs" alt="User Avatar Photo">
             <div class="AvatarInfo">
               <p class="q-mb-none"><b>Author: </b>{{ blog.user.name }}</p>
-              <p class="q-mb-none"><b>Date: </b>{{ blog.created_at }}</p>
+              <p class="q-mb-none"><b>Date: </b>{{ formatDate(blog.created_at) }}</p>
             </div>
           </div>
           <div class="CardInfo q-pt-md">
@@ -35,27 +35,32 @@ h1 {
   padding: 0;
   font-weight: 900;
   margin: 0;
-  font-size: 3em;
+  font-size: 2em;
+  line-height: 2em;
+  padding: 0;
 }
 h2 {
   padding: 0;
   margin: 0;
-  font-size: 2.7em;
+  font-size: 1.8em;
 }
 h3 {
   padding: 0;
   margin: 0;
-  font-size: 2.4em;
+  font-size: 1.6em;
 }
 h4 {
   padding: 0;
   margin: 0;
-  font-size: 2.1em;
+  font-size: 1.4em;
 }
 h5 {
   padding: 0;
   margin: 0;
-  font-size: 1.8em;
+  font-size: 1.2em;
+}
+p {
+  
 }
 </style>
 <style lang="scss" scoped>
@@ -88,7 +93,7 @@ h5 {
   height: 400px;
   border-radius: 24px;
   object-fit: cover;
-  object-position: center -150px;
+  object-position: center;
 }
 h2 {
   font-size: 24px;
@@ -160,6 +165,7 @@ h4 {
 </style>
 
 <script>
+import { date } from 'quasar'
 export default {
   name: 'BlogEntryPage',
   data: function() {
@@ -187,6 +193,11 @@ export default {
       }
       this.$router.push('/404');
       return false;
+    },
+    formatDate: function (datecode) {
+      let newDate = new Date(datecode);
+      let formatDate = date.formatDate(newDate, 'MMMM DD, YYYY')
+      return formatDate
     }
   }
 }
