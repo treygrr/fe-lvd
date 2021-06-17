@@ -135,7 +135,7 @@ export default {
       formData.append('tags', this.model);
       const success = await this.$store.dispatch('blog/CREATE_BLOG_POST', formData)
       if (success) {
-        this.$router.push('/manage');
+        this.$router.push('/blog');
       }
     },
     createValue (val, done) {
