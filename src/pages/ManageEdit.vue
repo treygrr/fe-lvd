@@ -160,10 +160,10 @@ export default {
       formData.append('user', this.$store.state.user.data.id);
       formData.append('tags', this.model);
       const success = await this.$store.dispatch('blog/EDIT_BLOG_POST', { formData, id: this.blogId })
-      // this.$store.dispatch('transition/GET_BLOG_POSTS');
-      // if (success) {
-      //   this.$router.push('/blog');
-      // }
+      this.$store.dispatch('transition/GET_BLOG_POSTS');
+      if (success) {
+        this.$router.push('/blog');
+      }
     },
     createValue (val, done) {
       if (val.length > 0) {
