@@ -106,8 +106,12 @@ nav {
     width: 100px;
     height: 50px;
     border-radius: 10px;
+    cursor: pointer;
     border: none;
     transition: background-color .25s ease-in-out;
+}
+.ButtonWave:last-child {
+    margin-right: 10px
 }
 .ButtonWave:focus {
     background-color: lightpink;
