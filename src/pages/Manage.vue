@@ -71,6 +71,8 @@ export default {
   methods: {
     logout: function () {
       this.$store.dispatch('user/LOGOUT');
+      this.$store.dispatch('transition/CHANGE_PAGE', { path: '/login' });
+
     },
     createBlog: function () {
       this.$store.dispatch('transition/CHANGE_PAGE', { path: '/manage/create' });
