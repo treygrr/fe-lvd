@@ -22,7 +22,13 @@ export async function LOGIN ({commit}, formData) {
             }
         })
         .catch(error => {
-            console.log('Error Login: ', error)
+            console.log('Error Login: ', error.response.data.error[0])
+            Notify.create({
+                timeout: 2000,
+                position: 'top',
+                color: 'accent',
+                message: error?.response?.data?.error[0]
+            })
         });
     });
 }
