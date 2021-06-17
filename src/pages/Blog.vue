@@ -1,7 +1,7 @@
 <template>
   <q-page v-if="blogs" style="background-color: rgba(255,255,255, .4); box-sizing: border-box;" class="Page flex row justify-center content-center items-center q-pa-sm">
     <section class="Content flex row justify-between content-center items-center">
-      <div v-for="blog in blogs.data" :key="blog.id" v-on:click.self="gotopage(`/blog/read/`, blog.id)" class="CardOuter q-mb-smn">
+      <div v-for="blog in blogs.data" :key="blog.id" @click="gotopage(`/blog/read/`, blog.id)" class="CardOuter q-mb-smn">
         <img v-if="blog.image" class="HeadImage" :src="`${$api.baseUrl + blog.image.path}`">
         <div class="Z-TOP q-pa-md">
           <div class="CardInfo">
@@ -19,8 +19,8 @@
           </div>
         </div>
         <div v-if="user" class="q-mt-lg">
-          <q-btn filled class="q-mr-lg" v-on:click="deleteBlog(blog.id)">Delete Entry {{ blog.id }}</q-btn>
-          <q-btn filled v-on:click="editBlog(blog.id)">Edit Entry</q-btn>
+          <q-btn filled class="q-mr-lg" v-on:click.stop.prevent="deleteBlog(blog.id)">Delete Entry {{ blog.id }}</q-btn>
+          <q-btn filled v-on:click.stop.prevent="editBlog(blog.id)">Edit Entry</q-btn>
         </div>
       </div>
     </section>
