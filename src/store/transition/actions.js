@@ -7,8 +7,7 @@ export function CHANGE_PAGE (commit, param) {
     setTimeout(() => {
         this.commit('transition/stopTransition')
         if (this.$router.history.current.path === param.path) return;
-        console.log({ path: param.path, query: param.blogid })
-        this.$router.push({ path: param.path, query: {blogid: param.blogid} })
+        this.$router.push({ path: param.path, query: {blogid: param.blogid} }).catch(()=>{});
     }, 1000);
 }
 
@@ -19,16 +18,21 @@ export function GET_BLOG_POSTS ({commit}) {
     })
 }
 
-export function GET_BLOG_POSTS_PAGE ({commit}, param) {
-    axios.get(param.url)
+export function GET_BLOG_POSTS_PAGE ({commit}, path) {
+    axios.get(`${path}`)
         .then(response => {
         commit('SET_BLOG_POSTS', response.data)
     })
 }
 
+
 export function GET_SINGLE_BLOG_POST ({ commit }, param) {
     axios.get(`${api.url}blog/${param.blogid}`)
         .then(response => {
-        commit('SET_BLOG_POST', response.data)
-    })
+            commit('SET_BLOG_POST', response.data)
+        })
+        .catch(error => {
+            console.log(error.request)
+        })
 }
+

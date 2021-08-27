@@ -1,16 +1,16 @@
 <template>
   <q-page style="background-color: rgba(255,255,255, .4); box-sizing: border-box;" class="Page column items-sm-center q-pa-sm">
     <section class="Content q-pa-sm">
-      <div class="CardOuter q-pa-lg q-mb-sm row items-center">
+      <div class="CardOuter q-mb-sm row items-center">
         <div class="AvatarFrame">
           <img src="https://i.picsum.photos/id/250/200/200.jpg?hmac=23TaEG1txY5qYZ70amm2sUf0GYKo4v7yIbN9ooyqWzs" alt="User Avatar Photo">
         </div>
         <div class="CardInfo q-pl-lg">
           <h2>Gilbert (Trey) Rogers</h2>
-          <p><b>Status:</b> Chasing a bug</p>
+          <p><b>Status:</b> Catching a bug!</p>
         </div>
       </div>
-      <div class="CardOuter q-pa-md">
+      <div class="CardOuter q-mt-lg">
         <h4>Motto:</h4>
         <p>
           I'm 29 years old and still have no clue where I'm going 🤷‍♀️, but know that I have the tools to get where I need to be.
@@ -56,7 +56,7 @@
 h2 {
   font-size: 24px;
   line-height: 34px;
-  color: rgba(0, 0, 0, .7);
+  color: rgba(0, 0, 0, .8);
   margin: 0;
 }
 
@@ -72,16 +72,15 @@ h4 {
 }
 .CardOuter {
   width: 100%;
-  color: rgba(0, 0, 0, .7);
+  color: rgba(0, 0, 0, .8);
 
-  background-color: rgb(255, 246, 193);
   box-sizing: border-box;
   border-radius: 10px;
     & > .AvatarFrame {
       max-width: 100px;
       max-height: 100px;
       box-sizing: border-box;
-      border-radius: 100%;
+      border-radius: 10px;
       overflow: hidden;
       & > img {
         width: 100%;
@@ -92,7 +91,7 @@ h4 {
 }
 .CardInfo {
   box-sizing: border-box;
-  color: rgba(0, 0, 0, .4);
+  color: rgba(0, 0, 0, .8);
 }
 @media only screen and (max-width: 600px) {
   .Content {

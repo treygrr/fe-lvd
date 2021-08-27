@@ -1,6 +1,6 @@
 export default function () {
   return {
-    transition: false,
+    transition: true,
     blogs: null,
     blog: null,
     perPage: 5,

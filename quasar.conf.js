@@ -7,7 +7,6 @@
 // https://v1.quasar.dev/quasar-cli/quasar-conf-js
 /* eslint-env node */
 const ESLintPlugin = require('eslint-webpack-plugin')
-
 module.exports = function (/* ctx */) {
   return {
     // https://v1.quasar.dev/quasar-cli/supporting-ts
@@ -32,7 +31,7 @@ module.exports = function (/* ctx */) {
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
       // 'ionicons-v4',
-      // 'mdi-v5',
+      'mdi-v5',
       // 'fontawesome-v5',
       // 'eva-icons',
       // 'themify',
@@ -45,7 +44,7 @@ module.exports = function (/* ctx */) {
 
     // Full list of options: https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      vueRouterMode: 'history', // available values: 'hash', 'history'
       env: require('dotenv').config().parsed,
       // transpile: false,
 
@@ -87,17 +86,23 @@ module.exports = function (/* ctx */) {
       // Possible values for "importStrategy":
       // * 'auto' - (DEFAULT) Auto-import needed Quasar components & directives
       // * 'all'  - Manually specify what to import
-      importStrategy: 'auto',
+      importStrategy: 'all',
 
       // For special cases outside of where "auto" importStrategy can have an impact
       // (like functional components as one of the examples),
       // you can manually specify Quasar components/directives to be available everywhere:
       //
       // components: [],
-      // directives: [],
+      directives: ['ClosePopup'],
       cssAddon: true,
       // Quasar plugins
-      plugins: []
+      plugins: ['Notify'],
+      config: {
+        // optional (v0.17+)
+        notify: {
+          // Notify defaults
+        }
+      },
     },
 
     // animations: 'all', // --- includes all animations

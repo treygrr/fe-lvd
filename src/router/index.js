@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 import routes from './routes'
 
 Vue.use(VueRouter)
@@ -14,8 +13,15 @@ Vue.use(VueRouter)
  * with the Router instance.
  */
 
-export default function (/* { store, ssrContext } */) {
+
+// TODO: Make sure to share this solution for allowing the store into the routes declarations.
+// Via making the default export a function that returns the routes array with an argument of store.
+// then we can assign the returned routes array to it here in the new VueRouter
+
+export default async function ({store}/* { store, ssrContext } */) {
   const Router = new VueRouter({
+    mode: 'history',
+    hash: false,
     scrollBehavior: () => ({ x: 0, y: 0 }),
     routes,
 
@@ -25,6 +31,12 @@ export default function (/* { store, ssrContext } */) {
     mode: process.env.VUE_ROUTER_MODE,
     base: process.env.VUE_ROUTER_BASE
   })
-
+  Router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requireAuth) && !store.getters['user/logged']) {
+      next({ name: 'login', query: { next: to.fullPath } })
+    } else {
+      next()
+    }
+  })
   return Router
 }

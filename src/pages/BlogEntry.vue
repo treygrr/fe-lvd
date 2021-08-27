@@ -7,17 +7,19 @@
     </section>
     <section class="Content">
       <div class="CardOuter q-pa-lg q-mb-smn">
-        <div class="flex row no-wrap">
-          <div class="AvatarFrame">
-            <img src="https://i.picsum.photos/id/250/200/200.jpg?hmac=23TaEG1txY5qYZ70amm2sUf0GYKo4v7yIbN9ooyqWzs" alt="User Avatar Photo">
-            <p class="q-mb-none">Gilbert Rogers</p>
-            <p class="q-mb-none">04/25/2022</p>
-          </div>
-          <div class="CardInfo q-pl-lg">
-            <h2>{{ blog.title }}</h2>
-            <div>
-              {{ blog.content }}
+        <div class="BlogHeadImageContainer">
+          <img v-if="blog.image" class="HeadImage" :src="`${this.$api.baseUrl + blog.image.path}`">
+        </div>
+        <div class="CardInfo">
+          <div class="AvatarFrame q-pt-md">
+            <img class="AvatarPhoto" src="https://i.picsum.photos/id/250/200/200.jpg?hmac=23TaEG1txY5qYZ70amm2sUf0GYKo4v7yIbN9ooyqWzs" alt="User Avatar Photo">
+            <div class="AvatarInfo">
+              <p class="q-mb-none"><b>Author: </b>{{ blog.user.name }}</p>
+              <p class="q-mb-none"><b>Date: </b>{{ formatDate(blog.created_at) }}</p>
             </div>
+          </div>
+          <div class="CardInfo q-pt-md">
+            <div v-html="blog.content" />
             <div class="flex row">
               <span v-for="tag in blog.tags" :key="tag.id" class="TagCard">{{ tag.tag }}</span>          
             </div>
@@ -28,6 +30,39 @@
     <div style="height: 100px;" />
   </q-page>
 </template>
+<style>
+h1 {
+  padding: 0;
+  font-weight: 900;
+  margin: 0;
+  font-size: 2em;
+  line-height: 2em;
+  padding: 0;
+}
+h2 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.8em;
+}
+h3 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.6em;
+}
+h4 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.4em;
+}
+h5 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.2em;
+}
+p {
+  
+}
+</style>
 <style lang="scss" scoped>
 .Page {
   width: 100vw;
@@ -48,6 +83,18 @@
   }
 }
 
+.BlogHeadImageContainer {
+
+
+}
+
+.HeadImage {
+  width: 100%;
+  height: 400px;
+  border-radius: 24px;
+  object-fit: cover;
+  object-position: center;
+}
 h2 {
   font-size: 24px;
   font-weight: 700;
@@ -78,35 +125,38 @@ h4 {
   width: 100%;
   color: rgba(0, 0, 0, .7);
   margin-bottom: 10px;
-  background-color: rgb(255, 246, 193);
   box-sizing: border-box;
   border-radius: 10px;
     &:last-child {
       margin-bottom: 0;
     }
-    & > div > .AvatarFrame {
-      max-width: 100px;
-      box-sizing: border-box;
-      border-radius: 10px;
-      width: 30%;
-      font-size: 14px;
-      text-align: center;
-      & > img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-      }
-  }
 }
 .CardInfo {
   box-sizing: border-box;
-  width: 70%;
+  width: 100%;
   color: rgba(0, 0, 0, .7);
   & > p {
     margin: 0;
   }
 }
-@media only screen and (max-width: 600px) {
+.AvatarFrame {
+  display: flex;
+  margin-top: 5px;
+}
+.AvatarPhoto {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.AvatarInfo {
+  width: 100%;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media only screen and (max-width: 900px) {
   .Content {
     width: 100%;
     box-sizing: border-box;
@@ -115,6 +165,7 @@ h4 {
 </style>
 
 <script>
+import { date } from 'quasar'
 export default {
   name: 'BlogEntryPage',
   data: function() {
@@ -137,12 +188,16 @@ export default {
       this.$router.push('/blog');
     },
     getUrlQuery: function () {
-      console.log(this.$route.query)
       if (this.$route.query.blogid) {
         return this.$route.query.blogid;
       }
       this.$router.push('/404');
       return false;
+    },
+    formatDate: function (datecode) {
+      let newDate = new Date(datecode);
+      let formatDate = date.formatDate(newDate, 'MMMM DD, YYYY')
+      return formatDate
     }
   }
 }

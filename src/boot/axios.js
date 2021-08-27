@@ -1,4 +1,10 @@
 import Vue from 'vue'
 import axios from 'axios'
 
-Vue.prototype.$axios = axios
+axios.defaults.withCredentials = true
+
+axios.defaults.headers = {
+    "Accept": "application/json"
+}
+
+Vue.prototype.$axios = axios;
